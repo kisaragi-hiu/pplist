@@ -1,7 +1,7 @@
 ;;; pplist.el --- Plists with multiple value forms -*- lexical-binding: t; -*-
 ;;
 ;; Author: Kisaragi Hiu <mail@kisaragi-hiu.com>
-;; Version: 0.0.1
+;; Version: 0.1.0
 ;; Keywords: extensions
 ;; Homepage: https://github.com/kisaragi-hiu/pplist
 ;; Package-Requires: ((emacs "24.1"))
