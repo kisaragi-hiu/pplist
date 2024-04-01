@@ -1,10 +1,17 @@
 ;; -*- mode: lisp-interaction; lexical-binding: t; -*-
 
-(require 'pkgname)
+(require 'pplist)
 (require 'buttercup)
 
-(describe "hello"
-  (it "says hello"
-    (expect (pkgname-hello-world)
+(describe "elt"
+  (it "extracts values"
+    (expect (pplist-elt '(:body "a" "b" "c" :another 1 2) :body)
             :to-equal
-            "Hello world!")))
+            '("a" "b" "c"))
+    (expect (pplist-elt '(:body "a" "b" "c" :another 1 2) :another)
+            :to-equal
+            '(1 2)))
+  (it "is leniant"
+    (expect (pplist-elt '("a" "b" "c" :another 1 2) :another)
+            :to-equal
+            '(1 2))))
