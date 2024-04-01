@@ -1,7 +1,7 @@
 (source melpa)
 (source gnu)
 
-(package-file "pkgname.el")
+(package-file "pplist.el")
 
 (development
  (depends-on "buttercup"))
