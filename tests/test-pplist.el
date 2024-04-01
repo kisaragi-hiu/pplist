@@ -16,7 +16,11 @@
             :to-equal
             '(1 2)))
   (it "distinguishes between nil and not set"
-    (expect (pplist-elt '(:key 1 2 3 4) :key2)
+    (expect (pplist-elt '(:key 1 2 3 4 :yes) :yes)
             :to-be nil)
-    (expect (pplist-elt '(:key 1 2 3 4) :key2 'not-found)
+    (expect (pplist-elt '(:key 1 2 3 4 :yes) :no)
+            :to-be nil)
+    (expect (pplist-elt '(:key 1 2 3 4 :yes) :yes 'not-found)
+            :to-be nil)
+    (expect (pplist-elt '(:key 1 2 3 4 :yes) :no 'not-found)
             :to-be 'not-found)))

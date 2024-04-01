@@ -35,7 +35,12 @@ If I want to write a macro that does something similar to `use-package` in the b
 
 A pplist is a list that associates *keys* to *values*. Its *keys* are elements that are keywords. *Values* associated with a *key* are elements that come after the key but before the next key.
 
-(This has the consequence that values are always lists. This is fine.)
+Consequences:
+
+- Values are always lists. This is fine.
+- Keywords cannot be values. `(:key :val)` is always two keys. Instead, wrap the value in another list like `(:key '(:val))`.
+
+Functions:
 
 - `pplist-elt (pplist key &optional dflt)`: return values in `pplist` associated with `key`. If `key` is not in `pplist`, return `dflt` (which defaults to nil).
 - `pplist-get`: an alias to `pplist-elt` 
