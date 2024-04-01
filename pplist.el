@@ -19,20 +19,25 @@
 ;;
 ;;; Code:
 
-(defun pplist-elt (pplist key)
-  "Get the value of KEY in PPLIST."
+(defun pplist-elt (pplist key &optional dflt)
+  "Get the value of KEY in PPLIST.
+If KEY is not in PPLIST, return DFLT which defaults to nil."
   (let ((reading-values nil)
+        (key-present nil)
         (values '()))
     (dolist (elem pplist)
       (cond
        ((eq elem key)
+        (setq key-present t)
         (setq reading-values t))
        ((keywordp elem) ; but not KEY as it's matched above
         (setq reading-values nil))
        (reading-values
         (push elem values))
        (t nil)))
-    (nreverse values)))
+    (if key-present
+        (nreverse values)
+      dflt)))
 
 (defalias 'pplist-get 'pplist-elt)
 
